@@ -59,7 +59,7 @@ h1 {
 }
 
 #plankton {
-  top: -20vh; /* Use percentages for responsive positioning */
+  top: -5vh; /* Use percentages for responsive positioning */
   left: 50%;
   width: 50vw; /* Use vw (viewport width) for scaling */
   /* min-width: 150px; Minimum size */
@@ -129,7 +129,7 @@ h1 {
 }
 
 #gearsnail {
-top: -130vh;
+  top: -130vh;
   left: 62%;
   width: 25vw;
   /* min-width: 120px; */
@@ -140,7 +140,7 @@ top: -130vh;
   left: 15%;
   width: 25vw;
   /* min-width: 140px; */
-} 
+}
 
 /* #plankton2 {
   bottom: -150vh;

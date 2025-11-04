@@ -10,6 +10,7 @@ const urchinAudio = new Audio("./audio/urchin.mp3");
 const gearsnailAudio = new Audio("./audio/gearsnail.mp3");
 const seaweedAudio = new Audio("./audio/seaweed.mp3");
 const anglerAudio = new Audio("./audio/angler.mp3");
+
 //if we want a background just affected by mouse positions / filters
 const backgroundAudio = new Audio("./audio/background.mp3");
 
@@ -17,6 +18,9 @@ let users = {};
 let socket; //make sure this is declared in the global scope!
 let userName;
 let userCursor; // Store this user's cursor image
+
+//booleans to handle if creature has been pressed or not
+let planktonIsPlaying = false;
 
 // Array of available cursor images
 const cursorImages = [
@@ -28,7 +32,7 @@ const cursorImages = [
   "./images/eel.png",
   "./images/angler.png",
   "./images/gearsnail.png",
-  "./images/seaweed2.png"
+  "./images/seaweed2.png",
 ];
 
 // Ask for user's name
@@ -65,7 +69,7 @@ function getCursorElement(id, cursorImage) {
 socket.on("userData", function (data) {
   users[data.id] = data;
   console.log("Received userData:", data);
-  
+
   // Only draw cursor if position and cursor image data exists
   if (data.x !== undefined && data.y !== undefined && data.cursor) {
     var el = getCursorElement(data.id, data.cursor);
@@ -75,41 +79,55 @@ socket.on("userData", function (data) {
   }
 });
 
-//share if one of the creatures is being pressed by someone to the server
-//the server emits this back to the others
-//then the soud is played for EVERYONE
-
-
+//if creature is pressed, sound starts playing
+//if creature is pressed again, sound STOPs playing
 
 //PLANKTON 1
 let plankton = document.getElementById("plankton");
+plankton.addEventListener("click", (event) => {
+  if (planktonIsPlaying) {
+    planktonAudio.pause();
+    planktonAudio.currentTime = 0; //reset to beginning
+    planktonIsPlaying = false;
+  } else {
+    socket.emit("plankton", { name: userName });
+    // planktonAudio.play();
+    planktonIsPlaying = true;
+    // Listen for message 'plankton' from the server if it has been pressed
+    socket.on("plankton", function (data) {
+      planktonAudio.play();
+      console.log("plankton is being pressed by:" + data.name);
+    });
+  }
+});
+
 //listen for plankton pressed down
-plankton.addEventListener("mousedown", (event) => {
-  console.log("plankton is being clicked");
-  socket.emit("plankton", { name: userName });
- // Listen for message 'plankton' from the server if it has been pressed
-  socket.on("plankton", function (data) {
-    planktonAudio.play();
-    console.log("plankton is being pressed by:" + data.name);
-  });
-});
+// plankton.addEventListener("mousedown", (event) => {
+//   console.log("plankton is being clicked");
+//   socket.emit("plankton", { name: userName });
+//   // Listen for message 'plankton' from the server if it has been pressed
+//   socket.on("plankton", function (data) {
+//     planktonAudio.play();
+//     console.log("plankton is being pressed by:" + data.name);
+//   });
+// });
 //MAYBE CHANGE THIS FEATURE/ASPECTS OF IT OUTSIDE OF SOCKET******
-plankton.addEventListener("mouseup", (event) => {
-  console.log("plankton is no longer clicked");
-  socket.emit("plankton-not-pressed", { name: userName });
-  // Listen for message 'plankton' from the server if it is no longer being pressed
-  socket.on("plankton-not-pressed", function (data) {
-    // planktonAudio.pause();
-    // planktonAudio.currentTime = 0;
-  });
-});
+// plankton.addEventListener("mouseup", (event) => {
+//   console.log("plankton is no longer clicked");
+//   socket.emit("plankton-not-pressed", { name: userName });
+//   // Listen for message 'plankton' from the server if it is no longer being pressed
+//   socket.on("plankton-not-pressed", function (data) {
+//     // planktonAudio.pause();
+//     // planktonAudio.currentTime = 0;
+//   });
+// });
 //SEAWEED
 let seaweed = document.getElementById("seaweed");
 //listen for seaweed element being pressed
 seaweed.addEventListener("mousedown", (event) => {
   console.log("seaweed was clicked");
   socket.emit("seaweed", { name: userName });
- //Listen from server if seaweed is being pressed
+  //Listen from server if seaweed is being pressed
   socket.on("seaweed", function (data) {
     seaweedAudio.play();
     console.log("seaweed is being pressed by:" + data.name);
@@ -135,8 +153,8 @@ socket.on("angler", function (data) {
 
 // Listen from server if angler is no longer being pressed
 // socket.on("angler-not-pressed", function (data) {
-  // anglerAudio.pause();
-  // anglerAudio.currentTime = 0;
+// anglerAudio.pause();
+// anglerAudio.currentTime = 0;
 // });
 
 //listen for angler element being pressed
@@ -184,7 +202,7 @@ urchin.addEventListener("mousedown", (event) => {
     seaweed2Audio.play();
     console.log("urchin is being pressed by:" + data.name);
   });
-}); 
+});
 urchin.addEventListener("mouseup", (event) => {
   console.log("urchin is no longer clicked");
   socket.emit("urchin-not-pressed", { name: userName });
@@ -195,23 +213,24 @@ urchin.addEventListener("mouseup", (event) => {
   });
 });
 //EEL 6
-let eel = document.getElementById("eel");//listen for eel element being pressed
+let eel = document.getElementById("eel"); //listen for eel element being pressed
 eel.addEventListener("mousedown", (event) => {
   console.log("eel was clicked");
   socket.emit("eel", { name: userName });
   //Listen from server if eel is being pressed
   socket.on("eel", function (data) {
-     eelAudio.play();
+    eelAudio.play();
     console.log("eel is being pressed by:" + data.name);
-  });});
+  });
+});
 eel.addEventListener("mouseup", (event) => {
   console.log("eel is no longer clicked");
   socket.emit("eel-not-pressed", { name: userName });
   // Listen from server if eel is no longer being pressed
   socket.on("eel-not-pressed", function (data) {
-  // eelAudio.pause();
-  // eelAudio.currentTime = 0;
-});
+    // eelAudio.pause();
+    // eelAudio.currentTime = 0;
+  });
 });
 //GEARSNAIL 7
 // let gearsnail = document.getElementById("gearsnail");
@@ -259,7 +278,7 @@ let jelly = document.getElementById("jelly");
 jelly.addEventListener("mousedown", (event) => {
   console.log("jelly was clicked");
   socket.emit("jelly", { name: userName });
- //Listen from server if jelly is being pressed
+  //Listen from server if jelly is being pressed
   socket.on("jelly", function (data) {
     jellyAudio.play();
     console.log("jelly is being pressed by:" + data.name);
@@ -270,7 +289,7 @@ jelly.addEventListener("mouseup", (event) => {
   socket.emit("jelly-not-pressed", { name: userName });
   // Listen from server if jelly is no longer being pressed
   socket.on("jelly-not-pressed", function (data) {
-     // jellyAudio.pause();
+    // jellyAudio.pause();
     // jellyAudio.currentTime = 0;
   });
 });
@@ -283,20 +302,20 @@ document.addEventListener("mousemove", function (event) {
   socket.emit("userData", { name: userName, x: x, y: y, cursor: userCursor });
 });
 
-    // soundFormats('wav', 'ogg','mp3');
-    // mySound = loadSound('plankton.mp3');
+// soundFormats('wav', 'ogg','mp3');
+// mySound = loadSound('plankton.mp3');
 // }
 
-    // Create both filters
-    // lowpassFilter = new p5.LowPass();
-    // highpassFilter = new p5.HighPass();
-    
-    // Connect audio chain: mySound -> lowpass -> highpass -> output
-    // mySound.connect(lowpassFilter);
-    // lowpassFilter.connect(highpassFilter);
-    
-    // Make audio loop
-    // mySound.loop();
+// Create both filters
+// lowpassFilter = new p5.LowPass();
+// highpassFilter = new p5.HighPass();
+
+// Connect audio chain: mySound -> lowpass -> highpass -> output
+// mySound.connect(lowpassFilter);
+// lowpassFilter.connect(highpassFilter);
+
+// Make audio loop
+// mySound.loop();
 
 //currently not using p5js -- keeping in case weneed it in the future
 //set up my canvas
