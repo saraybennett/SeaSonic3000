@@ -7,36 +7,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="./images/background.jpeg" as="image" />
-
     <title>SeaSonic3000 🪼</title>
   </head>
 
   <body>
-    <div>
-      <h1 class="heading">
-        Welcome to the SeaSonic3000! Technology and nature have evolved together
-        over the past 1000 years and nowhere is that more clear than when you
-        look at the ocean.
-        <b>Find the creature that matches your cursor and click on it</b>—you
-        might be surprised by what you find.
-      </h1>
-    </div>
+    <div id="wrapper">
+      <div id="overlay"></div>
+      <div>
+        <h1 class="heading">
+          Welcome to the SeaSonic3000! Technology and nature have evolved
+          together over the past 1000 years and nowhere is that more clear than
+          when you look at the ocean.
+          <b>Find the creature that matches your cursor and click on it</b>—you
+          might be surprised by what you find.
+        </h1>
+      </div>
 
-    <section class="sea-creature-pictures">
-      <img class="creature-img" id="plankton" src="./images/plankton.png" />
-      <img class="creature-img" id="seaweed" src="./images/seaweed.png" />
-      <img class="creature-img" id="angler" src="./images/angler.png" />
-      <img class="creature-img" id="angel" src="./images/angel.png" />
-      <img class="creature-img" id="urchin" src="./images/urchin.png" />
-      <img class="creature-img" id="eel" src="./images/eel.png" />
-      <img class="creature-img" id="seaweed2" src="./images/seaweed2.png" />
-      <img class="creature-img" id="gearsnail" src="./images/gearsnail.png" />
-      <img class="creature-img" id="jelly" src="./images/jellyfish.png" />
-    </section>
+      <div id="center_popup">
+        <div id="pop_up">
+          <p id="popup_text"></p>
+          <button id="continue_button" class="button">Continue</button>
+        </div>
+      </div>
+
+      <section class="sea-creature-pictures">
+        <img class="creature-img" id="plankton" src="./images/plankton.png" />
+        <img class="creature-img" id="seaweed" src="./images/seaweed.png" />
+        <img class="creature-img" id="angler" src="./images/angler.png" />
+        <img class="creature-img" id="angel" src="./images/angel.png" />
+        <img class="creature-img" id="urchin" src="./images/urchin.png" />
+        <img class="creature-img" id="eel" src="./images/eel.png" />
+        <!-- <img class="creature-img" id="seaweed2" src="./images/seaweed2.png" /> -->
+        <img class="creature-img" id="gearsnail" src="./images/gearsnail.png" />
+        <img class="creature-img" id="jelly" src="./images/jellyfish.png" />
+      </section>
+    </div>
 
     <!-- load scripts -->
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>

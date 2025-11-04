@@ -1,11 +1,20 @@
 html,
 body {
-  background: linear-gradient(to bottom, rgba(122, 122, 223), rgb(13, 3, 43));
-  font-family: Arial, Helvetica, sans-serif;
+  /* background: linear-gradient(to bottom, rgba(122, 122, 223), rgb(13, 3, 43)); */
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
   margin: 0;
-  /* background-image: url("./images/background.jpeg");
-  background-size: cover; */
+  background-image: url("./images/background.jpeg");
+  background-size: cover;
   min-height: 225vh;
+}
+
+p {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 15px;
 }
 
 h1 {
@@ -17,17 +26,28 @@ h1 {
   font-size: 32px;
 }
 
-/* not sure how z index stuff is working */
-
 .heading {
   position: absolute;
-  top: 110px;
-  left: 150px;
-  /* top: 50%;
+  /* top: 110px;
+  left: 150px; */
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
-  z-index: 1;
+  transform: translate(-50%, -50%);
+  /* z-index: 100; */
   max-width: 500px;
+  position: fixed;
+  background-color: rgba(160, 164, 192, 0.4);
+  padding: 24px;
+  /* border: 2px solid white; */
+  border-radius: 8px;
+  /* box-shadow: 10px 5px 5px white; */
+  display: flex;
+  flex-direction: column;
+  /* font-optical-sizing: auto; */
+  font-size: 25px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
 }
 
 .cursor {
@@ -38,15 +58,14 @@ h1 {
   transform: translate(-50%, -50%); /* Center the cursor on the coordinates */
   /* opacity: 0.8; */
   transition: all 0.1s ease; /* Smooth movement */
-  z-index: 9999; /* Ensure cursors appear on top */
+  z-index: 99; /*Ensure cursors appear on top*/
 }
 
-.sea-creature-pictures {
-  z-index: 2;
+/*.sea-creature-pictures {
   position: relative;
   width: 100%;
   height: 100%;
-}
+} */
 
 .creature-img {
   position: absolute;
@@ -59,7 +78,7 @@ h1 {
 }
 
 #plankton {
-  top: -5vh; /* Use percentages for responsive positioning */
+  bottom: -100vh; /* Use percentages for responsive positioning */
   left: 50%;
   width: 50vw; /* Use vw (viewport width) for scaling */
   /* min-width: 150px; Minimum size */
@@ -129,7 +148,7 @@ h1 {
 }
 
 #gearsnail {
-  top: -130vh;
+  top: 0vh;
   left: 62%;
   width: 25vw;
   /* min-width: 120px; */
@@ -140,6 +159,69 @@ h1 {
   left: 15%;
   width: 25vw;
   /* min-width: 140px; */
+}
+
+#overlay {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#center_popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+}
+
+#pop_up {
+  position: fixed;
+  background-color: rgba(43, 68, 210, 0.8);
+  padding: 24px;
+  border: 5px solid white;
+  border-radius: 8px;
+  box-shadow: 10px 5px 5px white;
+  display: flex;
+  flex-direction: column;
+  /* font-optical-sizing: auto; */
+  font-size: 25px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* z-index: 300; */
+}
+
+#popup_text {
+  color: white;
+  font-size: 25px;
+}
+
+#continue_button {
+  margin: auto;
+  font-size: 25px;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  color: rgb(22, 51, 195);
+  background-color: white;
+  box-shadow: 0 0.2em white;
+}
+
+.continue_button:hover {
+  transform: scale(1.1) !important; /* Slightly enlarges on hover */
 }
 
 /* #plankton2 {
