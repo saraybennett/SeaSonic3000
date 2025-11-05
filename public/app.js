@@ -181,7 +181,7 @@ socket.on("angler", function (data) {
   }
 });
 
-//ANGEL 4 - AUDIO NOT PLAYING IDK WHY :( works with other audio so maybe issue with file itself for some reason?
+//ANGEL 4
 let angel = document.getElementById("angel");
 
 angel.addEventListener("click", (event) => {
@@ -194,13 +194,14 @@ angel.addEventListener("click", (event) => {
 socket.on("angel", function (data) {
   if (angelIsPlaying) {
     backgroundAudio.pause();
-    backgroundAudio.currentTime = 0; //reset to beginning
+    backgroundAudio.currentTime = 0;
     angelIsPlaying = false;
-    angel.classList.remove("playing"); // Remove animation
+    angel.classList.remove("playing");
   } else {
     angelIsPlaying = true;
-    backgroundAudio.play();
-    angel.classList.add("playing"); // Add animation
+    //Console Log for if its something wrong once deployed (working locally fine) this audio was the only one not playing
+    backgroundAudio.play().catch(err => console.log("Audio play prevented:", err));
+    angel.classList.add("playing");
   }
 });
 
