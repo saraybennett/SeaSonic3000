@@ -72,12 +72,6 @@ io.on("connection", (socket) => {
     io.emit("urchin", data);
   });
 
-  //listen for urchin mouseup
-  socket.on("urchin-not-pressed", function (data) {
-    console.log("urchin is not being pressed by " + data.name);
-    io.emit("urchin-not-pressed", data);
-  });
-
   //EEL
   //listen for eel mousedown
   socket.on("eel", function (data) {

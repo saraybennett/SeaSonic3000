@@ -7,7 +7,9 @@ body {
   margin: 0;
   background-image: url("./images/background.jpeg");
   background-size: cover;
-  min-height: 225vh;
+  /* background-repeat: no-repeat; */
+  background-position: center;
+  min-height: 200vh;
 }
 
 p {
@@ -20,10 +22,8 @@ p {
 h1 {
   font-family: "Genos", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
   font-style: normal;
   text-align: justify;
-  font-size: 32px;
 }
 
 .heading {
@@ -36,7 +36,7 @@ h1 {
   /* z-index: 100; */
   max-width: 500px;
   position: fixed;
-  background-color: rgba(160, 164, 192, 0.4);
+  background-color: rgb(165, 196, 219, 0.7);
   padding: 24px;
   /* border: 2px solid white; */
   border-radius: 8px;
@@ -44,7 +44,7 @@ h1 {
   display: flex;
   flex-direction: column;
   /* font-optical-sizing: auto; */
-  font-size: 25px;
+  font-size: 30px;
   font-weight: normal;
   font-style: normal;
   text-align: center;
@@ -78,15 +78,15 @@ h1 {
 }
 
 #plankton {
-  bottom: -100vh; /* Use percentages for responsive positioning */
-  left: 50%;
-  width: 50vw; /* Use vw (viewport width) for scaling */
+  bottom: -130vh; /* Use percentages for responsive positioning */
+  /* left: 50%; */
+  width: 80vw; /* Use vw (viewport width) for scaling */
   /* min-width: 150px; Minimum size */
 }
 
 #seaweed {
-  bottom: -70vh;
-  left: -20vh;
+  bottom: -50vh;
+  left: -10vh;
   width: 30vw;
   transform: rotate(90deg);
   /* min-width: 120px; */
@@ -110,11 +110,11 @@ h1 {
 }
 
 #angler {
-  top: 30vh;
+  top: 45vh;
   left: 75%;
-  width: 28vw;
+  width: 30vw;
   /* min-width: 180px; */
-  transform: rotate(-40deg);
+  transform: rotate(-30deg);
 }
 
 #angler:hover {
@@ -122,9 +122,9 @@ h1 {
 }
 
 #angel {
-  bottom: -100vh;
-  right: 85%;
-  width: 15vw;
+  top: 0vh;
+  left: 62%;
+  width: 25vw;
   /* min-width: 160px; */
 }
 
@@ -141,22 +141,23 @@ h1 {
 }
 
 #eel {
-  top: 70vh;
+  top: 100vh;
   right: 3%;
   width: 47vw;
   /* min-width: 250px; */
 }
 
 #gearsnail {
-  top: 0vh;
-  left: 62%;
+  top: 75vh;
+  left: 40%;
   width: 25vw;
+  transform: rotate(-20deg);
   /* min-width: 120px; */
 }
 
 #jelly {
   top: 57vh;
-  left: 15%;
+  left: 10%;
   width: 25vw;
   /* min-width: 140px; */
 }
@@ -166,7 +167,7 @@ h1 {
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0);
 }
 
 #center_popup {
@@ -183,7 +184,7 @@ h1 {
 
 #pop_up {
   position: fixed;
-  background-color: rgba(43, 68, 210, 0.8);
+  background-color: rgba(44, 82, 110);
   padding: 24px;
   border: 5px solid white;
   border-radius: 8px;
@@ -215,12 +216,12 @@ h1 {
   font-family: "Saira Semi Condensed", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
-  color: rgb(22, 51, 195);
+  color: rgb(44, 82, 110);
   background-color: white;
   box-shadow: 0 0.2em white;
 }
 
-.continue_button:hover {
+#continue_button:hover {
   transform: scale(1.1) !important; /* Slightly enlarges on hover */
 }
 
