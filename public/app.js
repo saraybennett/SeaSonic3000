@@ -187,7 +187,7 @@ let angel = document.getElementById("angel");
 angel.addEventListener("click", (event) => {
   socket.emit("angel", { name: userName });
   creatureText =
-    "Sea angels protected themselves by absorbing a noxious molecule that keeps other creatures from eating them. We now use this molecule to protect our vulnerable truth tellers. Sea angels are known as peace guardians of our society, after they adapted from living in the highest density and deepest oceans in the world they rose to shallow waters and represented a shift in a time of peace for humanity.";
+    "Sea angels protected themselves by absorbing a noxious molecule that kept other creatures from eating them. We now use this molecule to protect our vulnerable truth tellers. Sea angels are known as peace guardians of our society. Adapting from living under the most pressure in the deepest oceans in the world, they rose to shallow waters, representing a shift to a time of peace for humanity.";
   showPopup(creatureText);
 });
 
@@ -200,7 +200,9 @@ socket.on("angel", function (data) {
   } else {
     angelIsPlaying = true;
     //Console Log for if its something wrong once deployed (working locally fine) this audio was the only one not playing
-    backgroundAudio.play().catch(err => console.log("Audio play prevented:", err));
+    backgroundAudio
+      .play()
+      .catch((err) => console.log("Audio play prevented:", err));
     angel.classList.add("playing");
   }
 });
@@ -210,7 +212,8 @@ let urchin = document.getElementById("urchin");
 
 urchin.addEventListener("click", (event) => {
   socket.emit("urchin", { name: userName });
-  creatureText = "Urchins now travel in groups, their intricate spiny structures create vast underwater expanses that catch and process plastic waste and nuclear fallout, releasing carbon and nitrogen back into the water and atmosphere. They have become essential to maintaining the health of our oceans and atmosphere, and we work closely with them to ensure their continued survival and success.";
+  creatureText =
+    "Urchins now travel in groups, and their intricate spiny structures create vast underwater expanses that catch and process plastic waste and nuclear fallout, releasing carbon and nitrogen back into the water and atmosphere. They have become essential to maintaining the health of our oceans and atmosphere, and we work closely with them to ensure their continued survival and success.";
   showPopup(creatureText);
 });
 
@@ -233,7 +236,7 @@ let eel = document.getElementById("eel");
 eel.addEventListener("click", (event) => {
   socket.emit("eel", { name: userName });
   creatureText =
-    "Electric eels averaged six feet and the most powerful could generate 860 volts of electricity. Nowadays, eels are up to 200 feet and generate enough power to run small towns. Factions of cooperating eels help cultivate power and have become a main power source for coastal towns. Other factions of eels have become more aggressive, using their electric abilities to defend their territory in intricate underwater grids maintained to keep the independance and autonomy of sea freedom for those uninterested in collaborating with humans.";
+    "Electric eels used to average six feet and the most powerful could generate 860 volts of electricity. Nowadays, eels run up to 200 feet and generate enough power to run small towns. Factions of cooperating eels help us cultivate power and have become a main power source for coastal towns. Other factions of eels have become more aggressive, using their electric abilities to defend their territory in intricate underwater grids maintained to keep the independence and autonomy of sea freedom for those uninterested in collaborating with humans.";
   showPopup(creatureText);
 });
 
@@ -254,7 +257,8 @@ socket.on("eel", function (data) {
 let gearsnail = document.getElementById("gearsnail");
 gearsnail.addEventListener("click", (event) => {
   socket.emit("gearsnail", { name: userName });
-  creatureText = "Gear Snails have bio engineered shells made of interlocking gears. With an incredibly slow metabolism their biology requires them to traverse 100 miles a day to survive, many of them help process eel power while their shells are used once they die to form necessary parts for regenerative mining and compounds for our rare city center tech nodes. They are a protected and revered species, though despite their adaptations they are a valuable contributor and some are poached for their shells.";
+  creatureText =
+    "Gear Snails have bioengineered shells made of interlocking gears. With an incredibly slow metabolism, their biology requires them to traverse 100 miles a day to survive. Many of them help process eel power, and their shells are also used once they die to form necessary parts for regenerative mining compounds for our rare city center tech nodes. They are a protected and revered species by many, but some are still unfortunately poached for their shells.";
   showPopup(creatureText);
 });
 
@@ -277,7 +281,8 @@ socket.on("gearsnail", function (data) {
 let jelly = document.getElementById("jelly");
 jelly.addEventListener("click", (event) => {
   socket.emit("jelly", { name: userName });
-  creatureText = "Jellyfish have adapted with high concentrations of Mercury. They are mostly left alone due to Mercury's toxic effects on humanity but are visible signs of the ocean's health - similar to a thermometer's function they rise as the temperature of the ocean rises and we are able to identify patterns and disruptions immediately with the observation of these adapted Jellyfish.";
+  creatureText =
+    "Jellyfish have adapted with high concentrations of mercury. They are mostly left alone due to mercury's toxic effects on humanity but are visible signs of the ocean's health - similar to a thermometer's function, they rise as the temperature of the ocean rises, and we are able to identify patterns and disruptions immediately by observing these adapted jellyfish.";
   showPopup(creatureText);
 });
 
@@ -337,94 +342,6 @@ function showPopup(creatureText) {
   });
 }
 
-// soundFormats('wav', 'ogg','mp3');
-// mySound = loadSound('plankton.mp3');
-// }
-
-// Create both filters
-// lowpassFilter = new p5.LowPass();
-// highpassFilter = new p5.HighPass();
-
-// Connect audio chain: mySound -> lowpass -> highpass -> output
-// mySound.connect(lowpassFilter);
-// lowpassFilter.connect(highpassFilter);
-
-// Make audio loop
-// mySound.loop();
-
-//currently not using p5js -- keeping in case weneed it in the future
-//set up my canvas
-// function setup() {
-//   createCanvas(windowWidth, windowHeight);
-
-//   // Ask for user's name
-//   //   userName = prompt("Please enter your name:", "Anonymous");
-//   //   if (!userName) userName = "Anonymous";
-
-//   //Initialize and connect socket
-//   //   socket = io();
-
-//   //Listen for confirmation of connection
-//   //   socket.on("connect", () => {
-//   //     console.log("Connected");
-//   //   });
-
-//   // Listen for messages named 'userData' from the server
-//   //   socket.on("userData", function (data) {
-//   //     users[data.id] = data;
-//   //     console.log(users);
-//   //   });
-// }
-
-//draw function -- handle images on screen
-// function draw() {
-//
-// }
-
-//more old code for ref
-//listen for plankton pressed down
-// plankton.addEventListener("mousedown", (event) => {
-//   console.log("plankton is being clicked");
-//   socket.emit("plankton", { name: userName });
-//   // Listen for message 'plankton' from the server if it has been pressed
-//   socket.on("plankton", function (data) {
-//     planktonAudio.play();
-//     console.log("plankton is being pressed by:" + data.name);
-//   });
-// });
-//MAYBE CHANGE THIS FEATURE/ASPECTS OF IT OUTSIDE OF SOCKET******
-// plankton.addEventListener("mouseup", (event) => {
-//   console.log("plankton is no longer clicked");
-//   socket.emit("plankton-not-pressed", { name: userName });
-//   // Listen for message 'plankton' from the server if it is no longer being pressed
-//   socket.on("plankton-not-pressed", function (data) {
-//     // planktonAudio.pause();
-//     // planktonAudio.currentTime = 0;
-//   });
-// });
-
-//SEAWEED2 8
-// let seaweed2 = document.getElementById("seaweed2");
-// //listen for seaweed2 element being pressed
-// seaweed2.addEventListener("mousedown", (event) => {
-//   console.log("seaweed2 was clicked");
-//   socket.emit("seaweed2", { name: userName });
-//  //Listen from server if seaweed2 is being pressed
-//   socket.on("seaweed2", function (data) {
-//     seaweed2Audio.play();
-//     console.log("seaweed2 is being pressed by:" + data.name);
-//   });
-// });
-// seaweed2.addEventListener("mouseup", (event) => {
-//   console.log("seaweed2 is no longer clicked");
-//   socket.emit("seaweed2-not-pressed", { name: userName });
-//   // Listen from server if seaweed2 is no longer being pressed
-//   socket.on("seaweed2-not-pressed", function (data) {
-//      // seaweed2Audio.pause();
-//     // seaweed2Audio.currentTime = 0;
-//   });
-// });
-//*
-
 //to do if time:
 //keep track of which sounds are already playing and then share that with the server and then with the new users who join the site
+//add a stop all audio button maybe?

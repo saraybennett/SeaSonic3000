@@ -44,7 +44,7 @@ h1 {
   display: flex;
   flex-direction: column;
   /* font-optical-sizing: auto; */
-  font-size: 30px;
+  font-size: 25px;
   font-weight: normal;
   font-style: normal;
   text-align: center;
@@ -61,12 +61,6 @@ h1 {
   z-index: 99; /*Ensure cursors appear on top*/
 }
 
-/*.sea-creature-pictures {
-  position: relative;
-  width: 100%;
-  height: 100%;
-} */
-
 .creature-img {
   position: absolute;
   height: auto;
@@ -79,7 +73,8 @@ h1 {
 /* FOUND THIS OUT!  So with animations it will change over the course of time based on these percentages*/
 /* Exaggerated animations for when audio is playing */
 @keyframes pulse-and-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) translateY(0);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   }
@@ -123,7 +118,8 @@ h1 {
 
 /* Animation for seaweed with rotation */
 @keyframes seaweed-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(90deg) scale(1) translateY(0);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   }
@@ -173,7 +169,8 @@ h1 {
 
 /* Animation for angler with rotation */
 @keyframes angler-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-30deg) scale(1) translateY(0);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   }
@@ -217,7 +214,8 @@ h1 {
 
 /* Animation for urchin with rotation */
 @keyframes urchin-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(110deg) scale(1) translateY(0);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   }
@@ -257,7 +255,8 @@ h1 {
 
 /* Animation for gearsnail with rotation */
 @keyframes gearsnail-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-20deg) scale(1) translateY(0);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   }
@@ -349,16 +348,3 @@ h1 {
 #continue_button:hover {
   transform: scale(1.1) !important; /* Slightly enlarges on hover */
 }
-
-/* #plankton2 {
-  bottom: -150vh;
-  left: 50%;
-  width: 40vw;
-
-  /* min-width: 180px; */
-/* }
-
-  plankton2.scroll({
-  left: 100,
-  behavior: "smooth",
-});   */
